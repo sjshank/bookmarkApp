@@ -1,0 +1,21 @@
+<!-- Landing page of application.-->
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8" />
+ 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Social Bookmark Application</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		
+		<!-- Including requirejs module and commonjs to load js files dynamically based on requirement-->
+		<script type="text/javascript" src="js/lib/require.min.2.1.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+	</head>
+<body class="container marginTop30px">
+	<ng-include src="'templates/header.htm'"></ng-include>
+	<div ng-view ></div>
+	<ng-include src="'templates/footer.htm'"></ng-include>
+</body>
+
+</html>

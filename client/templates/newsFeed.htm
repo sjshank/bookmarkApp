@@ -1,0 +1,33 @@
+<form role="form" name="feedForm" ng-submit="searchFeeds()">
+	<div class="row">
+		<div class="col-md-8">
+			<label for="question">Search </label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			<div class="input-group searchBoxDiv">
+				<input type="search" ng-model="searchQuery" name="searchFeeds" id="searchBox" class="col-md-8 form-control" value="" required="required" maxLength="100"
+					placeholder="Enter your search criteria here..."
+					>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Search</button> 
+		&nbsp;
+		<a class="btn btn-primary" href="#" role="button">Save Feed</a>
+	</div>
+	</form>
+
+<div class="" ng-repeat="feed in feedList | feedFilter" item="feed">
+	<div class="">
+		<div class="row">
+			<label>{{feed.name}}</label>
+		</div>
+		<div class="row">
+			<img src="{{feed.picture}}">
+		</div>
+		<div class="row">
+			<caption>{{feed.message}}</caption>
+		</div>
+	</div>
+</div>

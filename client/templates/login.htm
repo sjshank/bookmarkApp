@@ -1,0 +1,18 @@
+<div class="container-fluid loginDiv">
+
+	<div class="page-header ng-scope loginHeader solidBlackBorder">
+		<h3>Login</h3>
+	</div>
+
+	<div class="row errorBox" ng-show="hasError">
+		<div class="userErrDiv alert alert-danger">
+  			{{errorMsg}}
+		</div>
+	</div>
+
+ 	<center>
+		<div class="row"><button ng-click="doLogin('fb')" class="btn btn-primary  btn-large">Login with Facebook</button></div>
+		<br><br>
+		<div><button ng-click="doLogin('google')" class="btn btn-primary  btn-large">Login with Google+</button></div>
+	</center>
+</div>

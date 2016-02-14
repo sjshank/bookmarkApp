@@ -1,0 +1,158 @@
+.normalFont {
+  font-weight: normal !important;
+}
+.boldFont {
+  font-weight: bold !important;
+}
+.pointerCursor {
+  cursor: pointer;
+}
+.defaultCursor {
+  cursor: default !important;
+}
+.floatLeft {
+  float: left;
+}
+.floatRight {
+  float: right;
+}
+.divClear {
+  clear: both;
+}
+.displayInlineFlex {
+  display: inline-flex;
+}
+.displayInline {
+  display: inline !important;
+}
+.displayNone {
+  display: none;
+}
+.redText {
+  color: red;
+}
+.solidBlackBorder {
+  border-bottom: 1px solid #424242;
+}
+.bRadius {
+  border-radius: 4px;
+}
+.autoWidth {
+  width: auto;
+}
+.maroonClass {
+  background-color: #350b07 !important;
+  border-color: #350b07 !important;
+}
+.alignCenter {
+  text-align: center;
+}
+.fontClass {
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.marginTop16px {
+  margin-top: 16px;
+}
+.marginTop20px {
+  margin-top: 20px;
+}
+.marginTop30px {
+  margin-top: 30px;
+}
+.profilePicDiv {
+  margin-top: -40px;
+  display: table;
+}
+.logoutClass {
+  padding: 5px 0px !important;
+  color: #cccccc;
+}
+.body {
+  color: #dddddd;
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.bookmarkHeader {
+  background-color: #350b07;
+  border-color: #350b07;
+}
+.colorSienna {
+  color: #a0522d !important;
+}
+.color-ccc {
+  color: #cccccc;
+}
+.headerNav {
+  background-color: #350b07 !important;
+  border-color: #350b07 !important;
+}
+.footer {
+  margin-top: 20px;
+}
+.footerSection {
+  min-height: 50px;
+  margin-top: 16px;
+  border-radius: 4px;
+  background-color: #350b07 !important;
+  border-color: #350b07 !important;
+}
+.footerLbl {
+  margin-top: 16px;
+}
+.searchDiv {
+  margin-top: -16px;
+}
+.searchBoxDiv {
+  display: inline !important;
+  border-radius: 4px;
+}
+#searchBox {
+  border-radius: 4px;
+}
+.errDiv {
+  margin-left: auto !important;
+  margin-botton: 15px !important;
+}
+.loginHeader {
+  margin: 0px 0 15px !important;
+  padding-bottom: 0px !important;
+}
+.marginTopMinus15px {
+  margin-top: -15px;
+}
+.marginLeftMinus15px {
+  margin-left: -15px;
+}
+.modal-content {
+  height: 200px;
+}
+.marginBottom8px {
+  margin-bottom: 8px !important;
+}
+.errorBox {
+  margin-left: 0px;
+  width: 1100px !important;
+}
+.legendClass {
+  border-style: none !important;
+  margin-bottom: 0px !important;
+}
+.loginDiv {
+  background-color: aliceblue;
+  border: 1px solid aliceblue;
+  border-radius: 5px;
+  width: 330px;
+}
+.marginLeft40px {
+  margin-left: 40%;
+}
+.smallInlineErr {
+  margin-left: 82px;
+}
+.fontSize16 {
+  font-size: 16px;
+}
+.userErrDiv {
+  width: 300px !important;
+}

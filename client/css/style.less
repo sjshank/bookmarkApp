@@ -1,0 +1,176 @@
+@body-background : #DDD;
+@maroon-background : #350B07;
+@fontSize12 : 12px;
+@fontSize14 : 14px;
+@fontSize16 : 16px;
+@fontStyle : Helvetica,Arial,sans-serif;
+@color-sienna : sienna;
+@colorProp : color;
+@fontProp : font;
+@color-ccc : #ccc;
+@marginTop16px : 16px;
+@marginTopProp : margin-top;
+@marginLeftProp : margin-left;
+@width : width;
+@300px : 300px;
+@2px : 2px;
+@10px : 10px;
+@20px : 20px;
+@40px : 40px;
+@40per  : 40%;
+
+.normalFont {
+	font-weight : normal !important;
+}
+.boldFont {
+	font-weight : bold !important;
+}
+.pointerCursor {
+	cursor: pointer;	
+}
+.defaultCursor {
+	cursor: default !important;	
+}
+.floatLeft {
+	float : left;
+}
+.floatRight {
+	float : right;
+}
+.divClear {
+	clear : both;
+}
+.displayInlineFlex {
+	display: inline-flex;
+}
+.displayInline {
+	display: inline !important;
+}
+.displayNone {
+	display : none;
+}
+.redText {
+	@{colorProp} : red;
+}
+.solidBlackBorder {
+	border-bottom : 1px solid #424242;
+}
+.bRadius {
+	border-radius : 4px;
+}
+.autoWidth {
+	@{width} : auto;
+}
+.maroonClass {
+	background-@{colorProp} : @maroon-background !important;
+	border-@{colorProp} : @maroon-background !important;
+}
+.alignCenter {
+	text-align : center;
+}
+.fontClass {
+	font-size : @fontSize12;
+	font-family : @fontStyle;
+}
+.marginTop16px{
+	@{marginTopProp}: @marginTop16px;
+}
+.marginTop20px{
+	@{marginTopProp}: @20px;	
+}
+.marginTop30px{
+	@{marginTopProp} : @20px + @10px;
+}
+.profilePicDiv{
+	@{marginTopProp} : -@40px;
+	display : table;	
+}
+.logoutClass{
+	padding: 5px 0px !important;
+	.color-ccc
+}
+.body {
+	@{colorProp} : @body-background;
+	.fontClass
+}
+.bookmarkHeader {
+	background-@{colorProp} : @maroon-background;
+	border-@{colorProp} : @maroon-background;
+}
+.colorSienna {
+	@{colorProp} : @color-sienna !important;
+}
+.color-ccc {
+	@{colorProp} : @color-ccc;
+}
+.headerNav {
+	.maroonClass
+}
+.footer {
+	.marginTop20px
+}
+.footerSection {
+	 min-height: 50px;
+	 @{marginTopProp}: @marginTop16px;
+	 .bRadius;
+	 .maroonClass
+}
+.footerLbl{
+	.marginTop16px
+}
+.searchDiv {
+	@{marginTopProp} : -@marginTop16px;
+}
+.searchBoxDiv {
+	display : inline !important;
+	.bRadius
+}
+#searchBox {
+	.bRadius
+}
+.errDiv{
+	@{marginLeftProp} : auto !important;
+	margin-botton : 15px !important;
+}
+.loginHeader, {
+	margin : 0px 0 15px !important;
+	padding-bottom : 0px !important;
+}
+.marginTopMinus15px {
+	@{marginTopProp} : -@marginTop16px + 1;	
+}
+.marginLeftMinus15px {
+	@{marginLeftProp} : -@marginTop16px + 1;	
+}
+.modal-content {
+	height : @20px * 10;
+}
+.marginBottom8px {
+	margin-bottom: @10px - 2 !important;
+}
+.errorBox {
+	@{marginLeftProp}: 0px;
+    @{width}: @300px * 3 + @40px * 5 !important;
+}
+.legendClass {
+	border-style : none !important;
+	margin-bottom : 0px !important;
+}
+.loginDiv {
+	background-@{colorProp} : aliceblue;
+    border: 1px solid aliceblue;
+    border-radius: 5px;
+    @{width}: @300px + @20px + @10px;
+}
+.marginLeft40px {
+	@{marginLeftProp} : @40per;
+}
+.smallInlineErr {
+	@{marginLeftProp} : 82px;
+}
+.fontSize16 {
+	font-size : @fontSize16;
+}
+.userErrDiv {
+	@{width}: @300px !important;
+}
