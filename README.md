@@ -1,4 +1,4 @@
-# bookmarkApp
+# Social Bookmark Application
 MEAN Stack based web application where you can search feeds/posts from your Facebook/Google+ page and save them in your pocket.
 
 Programming Language : JavaScript
