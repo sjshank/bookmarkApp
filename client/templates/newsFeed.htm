@@ -1,33 +1,93 @@
-<form role="form" name="feedForm" ng-submit="searchFeeds()">
-	<div class="row">
-		<div class="col-md-8">
-			<label for="question">Search </label>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-8">
-			<div class="input-group searchBoxDiv">
-				<input type="search" ng-model="searchQuery" name="searchFeeds" id="searchBox" class="col-md-8 form-control" value="" required="required" maxLength="100"
-					placeholder="Enter your search criteria here..."
-					>
+<div class="row"  ng-show="showSuccessAlert">
+				<ng-include src="'templates/successTmpl.htm'" scope=""></ng-include>
+</div>
+<div class="row"  ng-show="hasError">
+				<ng-include src="'templates/errorTemplate.htm'" scope=""></ng-include>
+</div>
+<div class="row autoLeft">
+	<div class="searchFeedSec" ng-class="{rightBorder : showRightBorder}">
+		<form  role="form" name="feedForm1" ng-submit="searchFeeds('fb')">
+			<div class="row">
+				<div class="col-md-8">
+					<label for="question">Search Feeds from social page</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-8">
+					<div class="input-group searchBoxDiv">
+						<input type="search" ng-model="searchQuery" name="searchFeeds" id="searchBox" class="col-md-8 form-control" value="" required="required" maxLength="100"
+							placeholder="Enter your search criteria here..."
+							>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary">Search</button> 
+				&nbsp;
+				<a class="btn btn-primary" ng-click="saveFeeds($event)" role="button">Save Feed</a>
+			</div>
+		</form>
+
+		<div  class="row autoLeft">
+			<div class="col-3 menu">
+				<ul>
+		            <li class="float" ng-repeat="feed in feedList" item="feed">
+
+			            <div>
+			            	{{feed.name}}
+			            </div>
+			            <div>
+			            	<img style="width:25%" src="{{feed.picture}}">
+			            </div>
+			            <div>
+			            	{{feed.message}}
+			            </div>
+		            </li>
+		        </ul>
 			</div>
 		</div>
-		<button type="submit" class="btn btn-primary">Search</button> 
-		&nbsp;
-		<a class="btn btn-primary" href="#" role="button">Save Feed</a>
-	</div>
-	</form>
+		<br>
 
-<div class="" ng-repeat="feed in feedList | feedFilter" item="feed">
-	<div class="">
-		<div class="row">
-			<label>{{feed.name}}</label>
-		</div>
-		<div class="row">
-			<img src="{{feed.picture}}">
-		</div>
-		<div class="row">
-			<caption>{{feed.message}}</caption>
-		</div>
 	</div>
+
+
+
+	<div class="saveFeedSec" ng-class="{leftBorder : showLeftBorder}">
+		<form style="margin-left: 18px;" role="form" name="feedForm2" ng-submit="searchSavedFeeds($event)">
+			<div class="row">
+				<div class="col-md-8">
+					<label for="question">Search Saved Feeds</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-8">
+					<div class="input-group searchBoxDiv">
+						<input type="search" ng-model="savedFeedQuery" name="savedFeed" id="savedFeedBox" class="col-md-8 form-control" value="" required="required" maxLength="100"
+							placeholder="Enter your search criteria here..."
+							>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary">Search</button> 
+			</div>
+		</form>
+		
+		<div  class="row autoLeft">
+			<div class="col-3 menu" style="margin-left:18px;">
+				<ul>
+		            <li class="float" ng-repeat="feed in savedFeedList" item="feed">
+
+			            <div>
+			            	{{feed.name}}
+			            </div>
+			            <div>
+			            	<img style="width:25%" src="{{feed.picture}}">
+			            </div>
+			            <div>
+			            	{{feed.message}}
+			            </div>
+		            </li>
+		        </ul>
+			</div>
+		</div>
+		
+	</div>
+
 </div>

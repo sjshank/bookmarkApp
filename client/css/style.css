@@ -40,6 +40,9 @@
 .autoWidth {
   width: auto;
 }
+.autoLeft {
+  margin-left: auto;
+}
 .maroonClass {
   background-color: #350b07 !important;
   border-color: #350b07 !important;
@@ -61,8 +64,9 @@
   margin-top: 30px;
 }
 .profilePicDiv {
-  margin-top: -40px;
+  margin-top: -24px;
   display: table;
+  margin-right: 10px;
 }
 .logoutClass {
   padding: 5px 0px !important;
@@ -113,6 +117,8 @@
 .errDiv {
   margin-left: auto !important;
   margin-botton: 15px !important;
+  width: 1142px;
+  margin-right: auto;
 }
 .loginHeader {
   margin: 0px 0 15px !important;
@@ -155,4 +161,59 @@
 }
 .userErrDiv {
   width: 300px !important;
+}
+.menu {
+  width: 95% !important;
+}
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.menu li {
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color: #33b5e5;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+.menu li:hover {
+  background-color: #0099cc;
+}
+.searchFeedSec {
+  width: 53%;
+  border-right-style: 1px solid !important;
+  border: 1px solid thistle;
+  border-left-style: none;
+  border-bottom-style: none;
+  border-top-style: none;
+  float: left;
+}
+hr.vertical {
+  width: 0px;
+  height: 100%;
+}
+.googlePlusBtn {
+  width: 53%;
+  margin-botton: 15px;
+}
+.saveFeedSec {
+  width: 46%;
+  border-left-style: none;
+  border-bottom-style: none;
+  border-top-style: none;
+  border-right-style: none;
+  float: left;
+}
+.rightBorder {
+  border: 1px solid thistle;
+  border-left-style: none;
+  border-bottom-style: none;
+  border-top-style: none;
+}
+.leftBorder {
+  border: 1px solid thistle;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-top-style: none;
 }

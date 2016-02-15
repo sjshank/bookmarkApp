@@ -5,6 +5,7 @@
 var UserModel = require("../models/userModel"),
 	bCrypt = require('bcrypt-nodejs');
 
+//save authenticated data
 exports.doLogin = function(req, res) {
 	
 	if(typeof req.body != undefined || req.body !== ""){
@@ -15,7 +16,6 @@ exports.doLogin = function(req, res) {
 		}else{
 			var userObj = req.body.userObj;
 			userObj.hashToken = generateHash(req.body.token);
-			console.log(userObj.hashToken);
 			UserModel.findOneAndUpdate(
 				{ email: userObj.email },
 				{

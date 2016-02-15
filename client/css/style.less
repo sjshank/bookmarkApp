@@ -61,6 +61,9 @@
 .autoWidth {
 	@{width} : auto;
 }
+.autoLeft {
+	@{marginLeftProp} : auto;
+}
 .maroonClass {
 	background-@{colorProp} : @maroon-background !important;
 	border-@{colorProp} : @maroon-background !important;
@@ -82,8 +85,10 @@
 	@{marginTopProp} : @20px + @10px;
 }
 .profilePicDiv{
-	@{marginTopProp} : -@40px;
 	display : table;	
+	margin-top: -24px;
+    display: table;
+    margin-right: 10px;
 }
 .logoutClass{
 	padding: 5px 0px !important;
@@ -131,6 +136,8 @@
 .errDiv{
 	@{marginLeftProp} : auto !important;
 	margin-botton : 15px !important;
+	width: 1142px;
+    margin-right: auto;
 }
 .loginHeader, {
 	margin : 0px 0 15px !important;
@@ -173,4 +180,60 @@
 }
 .userErrDiv {
 	@{width}: @300px !important;
+}
+.menu{
+	width: 95% !important;
+}
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.menu li {
+    padding: 8px;
+    margin-bottom: 7px;
+    background-@{colorProp} :#33b5e5;
+    @{colorProp}: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.menu li:hover {
+    background-@{colorProp}: #0099cc;
+}
+.searchFeedSec {
+	width: 53%;
+    border-right-style: 1px solid !important;
+    border: 1px solid thistle;
+    border-left-style: none;
+    border-bottom-style: none;
+    border-top-style: none;
+    .floatLeft
+}
+hr.vertical
+{
+   width: 0px;
+   height: 100%;
+} 
+.googlePlusBtn {
+	@{width} : 53%;
+	margin-botton : @marginTop16px - 1;
+}
+.saveFeedSec {
+ 	width: 46%;
+    border-left-style: none;
+    border-bottom-style: none;
+    border-top-style: none;
+    border-right-style: none;
+    .floatLeft
+}
+.rightBorder {
+	border : 1px solid thistle;
+	border-left-style: none;
+    border-bottom-style: none;
+    border-top-style: none;
+}
+.leftBorder {
+	border : 1px solid thistle;
+	border-right-style: none;
+    border-bottom-style: none;
+    border-top-style: none;
 }

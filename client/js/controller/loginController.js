@@ -48,9 +48,8 @@ define(['app',
                                                 function(response) {
                                                     authFactory.setUserObj(response);
                                                     $rootScope.isFBLogin = true;
-                                                    $rootScope.showLogout = true;
                                                     authFactory.setToken(FB.getAuthResponse().accessToken);
-                                                    processLogin(authFactory, loginService, $scope, $location,checkResponseService);
+                                                    processLogin(authFactory, loginService, $scope, $rootScope, $location,checkResponseService);
                                                    
                                             });
                                     }
@@ -74,7 +73,7 @@ define(['app',
                                                     authFactory.setUserObj(user);
                                                     $rootScope.isFBLogin = false;
                                                     $rootScope.showLogout = true;
-                                                    processLogin(authFactory, loginService, $scope, $location, checkResponseService);
+                                                    processLogin(authFactory, loginService, $scope, $rootScope, $location, checkResponseService);
                                                 });
                                             } else if (authResult && !authResult.status.signed_in){
                                                 $scope.hasError = true;
@@ -95,7 +94,7 @@ define(['app',
         }]);
 
     // private function to process authenticated login data and store in database
-    function processLogin(authFactory, loginService, $scope, $location, checkResponseService){
+    function processLogin(authFactory, loginService, $scope, $rootScope, $location, checkResponseService){
         loginService.doLogin(
                         {
                            userObj : authFactory.getUserObj(),
@@ -104,6 +103,7 @@ define(['app',
                             if(checkResponseService.checkResponse(response, $scope, true)){
                                $scope.hasError = false;
                                 $location.path('/feed');
+                                $rootScope.showLogout = true;
                                
                         }
                         }, function(err){
