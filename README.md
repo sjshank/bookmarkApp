@@ -1,5 +1,5 @@
 # bookmarkApp
-MEAN Stack based web application wher you can search feeds/posts from your Facebook/Google+ page and save them in your pocket.
+MEAN Stack based web application where you can search feeds/posts from your Facebook/Google+ page and save them in your pocket.
 
 Programming Language : JavaScript
 
@@ -22,12 +22,13 @@ Libraries :
     10. angular-cookies - client side session storing in cookies
     11. less - compiling less into css
     
-    
 Database : NoSql - Mongodb
+
+Tools : SublimeText2
     
     
 Steps to follow for running app :
-    1. install Nodejs from here https://nodejs.org/en/ and make node env up. This will automatically install NPM package in            your system
+    1. install Nodejs from here https://nodejs.org/en/ and make node env up. This will automatically install NPM package in your system
     2. Install mongodb from here https://www.mongodb.org and make it up. No need to create new db for this sample. It will             create by own.
     3. Install Python 2.7+ version from here https://www.python.org/download/releases/2.7/
     4. Run 'npm install' on 'package.json'. This will create new folder 'node_modules' inside same directory where you can see       all the mentioned dependencies inside 'package.json' will gets installed.
