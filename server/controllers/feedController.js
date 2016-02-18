@@ -14,28 +14,33 @@ exports.saveFeeds = function(req, res) {
 			res.json({validationMsg : "There is no news feed to save"});
 		}else{
 			var userObj = req.body.userObj;
-			var feedObject = {
-				email : userObj.email,
-				feeds : req.body.feeds,
-				saved_by : userObj.name
-			};
+			var feedList = req.body.feeds;
+				for(var i =0; i <= feedList.length - 1; i++){
+					var id = feedList[i]['id'];
 
-			FeedModel.findOneAndUpdate(
-				{ email: userObj.email },
-				{
-				 	$set: feedObject
-				 	},
-				{
-					upsert: true,
-			    	new : true
-			    }, function(err, result){
-						if(err){
-							console.log(err);
-							res.json({errMsg : "Something went wrong in backend. We are working hard to resolve."});
-						}else{
-							res.json({result : "success"});
-						}
-			});
+					FeedModel.update(
+						{ email: userObj.email,
+						  'feeds.id' : id},
+						{
+						 	$set: {
+							 	feeds : feedList[i],
+							 	email : userObj.email,
+							 	saved_by : userObj.name
+						 	}
+						},
+						{
+							upsert: true,
+					    	new : true
+					    }, function(err, result){
+								if(err){
+									console.log(err);
+									res.json({errMsg : "Something went wrong in backend. We are working hard to resolve."});
+								}
+					});
+			}
+
+			res.json({result : "success"});
+			
 		}
 	}else{
 		res.json({validationMsg : "Request is empty"});
@@ -49,7 +54,7 @@ exports.getFeeds = function(req, res) {
 			var queryParm = req.query;
 			var searchQuery = queryParm.searchQuery.toString();
 			var pattern = searchQuery;
-			FeedModel.find({feeds : {$elemMatch : { message : { $regex: pattern, $options: "i"}}}}, function(err, result){
+			FeedModel.find({feeds : {$elemMatch : { message : { '$regex' : '.*'+searchQuery+'.*'}}}}, function(err, result){
 				if (err) {
 					console.log(err);
 					res.json({errMsg : "Something went wrong in backend. We are working hard to resolve."});

@@ -2,7 +2,7 @@ define(['angular',
         'facebook'],
 		function(angular,
                  facebook){
-
+                 
 return function(bookmarkApp){
             var _self = this;
 			'use strict';
@@ -39,7 +39,6 @@ return function(bookmarkApp){
 			bookmarkApp.run(['$rootScope', '$location', 'authFactory', function($rootScope, $location, authFactory){
 
 				$rootScope.$on('$routeChangeStart', function(event, next, current){
-                    console.log(next.$$route);
 					try{
                         if(next.$$route.authenticated){
                             var isAuth = authFactory.getToken();
@@ -56,10 +55,12 @@ return function(bookmarkApp){
 			}]);
 
             // Facebook/Google+ Logout implementation
-            bookmarkApp.run([ '$rootScope', 'authFactory', '$location', 'GooglePlus', function($rootScope, authFactory, $location, GooglePlus) {
+            bookmarkApp.run([ '$rootScope', 'authFactory',
+                             '$location', 'GooglePlus',
+                            function($rootScope, authFactory, $location, GooglePlus) {
                 $rootScope.logout = function(){
                     try{
-                        if($rootScope.isFBLogin){
+                        if(authFactory.getUserObj().isFBLogin){
                             FB.logout(function(response) {
                                 authFactory.clearCookies();
                                 window.location = '#/login';

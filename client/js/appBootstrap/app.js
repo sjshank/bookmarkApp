@@ -38,22 +38,6 @@ define(['angular',
                  });
         }]);
 
-        webApp.filter('feedFilter', ['$rootScope','$scope', function($rootScope, $scope) {
-                                                return function(input) {
-                                                        angular.forEach(input, function(feed) {
-                                                                if(feed && feed.message){
-                                                                        var feedMessage = feed.message.toLowerCase();
-                                                                        var query = $rootScope.feedQuery.toLowerCase();
-                                                                        if(feedMessage.indexOf(query) > -1){
-                                                                                console.log(feed);
-                                                                                $scope.$apply();
-                                                                                return feed;
-                                                                        }                                           
-                                                                }
-                                                        });
-                                                };
-                                        }]);
-
         //Bootstrapping application using AngularAMD
         return angularAMD.bootstrap(webApp);
 });

@@ -46,8 +46,8 @@ define(['app',
                                                 'GET',
                                                 {"fields":"id,name,picture{url},first_name,last_name,email"},
                                                 function(response) {
+                                                    response.isFBLogin = true;
                                                     authFactory.setUserObj(response);
-                                                    $rootScope.isFBLogin = true;
                                                     authFactory.setToken(FB.getAuthResponse().accessToken);
                                                     processLogin(authFactory, loginService, $scope, $rootScope, $location,checkResponseService);
                                                    
@@ -56,10 +56,7 @@ define(['app',
                                     else if (response.authResponse && response.status === 'not_authorized'){
                                             $scope.hasError = true;
                                             $scope.errorMsg = "Not authorized to access. Please log in."
-                                    }else{
-                                            $scope.hasError = true;
-                                            $scope.errorMsg = "Service is temporarily unavailable."
-                                    }  
+                                    } 
                                 });
                             }else{
                                 $location.path('/feed');
@@ -70,9 +67,8 @@ define(['app',
                                             if(authResult && authResult.status.signed_in){
                                                 authFactory.setToken(authResult.access_token);
                                                 GooglePlus.getUser().then(function (user) {
+                                                    user.isFBLogin = false;
                                                     authFactory.setUserObj(user);
-                                                    $rootScope.isFBLogin = false;
-                                                    $rootScope.showLogout = true;
                                                     processLogin(authFactory, loginService, $scope, $rootScope, $location, checkResponseService);
                                                 });
                                             } else if (authResult && !authResult.status.signed_in){
@@ -103,7 +99,6 @@ define(['app',
                             if(checkResponseService.checkResponse(response, $scope, true)){
                                $scope.hasError = false;
                                 $location.path('/feed');
-                                $rootScope.showLogout = true;
                                
                         }
                         }, function(err){

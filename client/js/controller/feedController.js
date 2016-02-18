@@ -27,7 +27,8 @@ define(['angular',
 				$scope.showRightBorder = true;
 				$scope.showSuccessAlert = false;
 				$scope.hasError = false;
-				$scope.userDetails.picUrl = $rootScope.isFBLogin ? authFactory.getUserObj().picture.data.url : authFactory.getUserObj().picture
+				$scope.userDetails.picUrl = authFactory.getUserObj().isFBLogin ? authFactory.getUserObj().picture.data.url : authFactory.getUserObj().picture
+
 
 				/*
 				* Search feed event handler.
@@ -37,6 +38,7 @@ define(['angular',
 					$scope.showLeftBorder = false;
 					$scope.showRightBorder = true;
 					$scope.showSuccessAlert = false;
+					$scope.hasError = false;
 					$scope.feedList = [];
 					feedFactory.clearFeedObj();
 				if(vendor === 'fb'){
