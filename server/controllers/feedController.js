@@ -19,8 +19,7 @@ exports.saveFeeds = function(req, res) {
 					var id = feedList[i]['id'];
 
 					FeedModel.update(
-						{ email: userObj.email,
-						  'feeds.id' : id},
+						{ 'feeds.id' : id},
 						{
 						 	$set: {
 							 	feeds : feedList[i],
@@ -54,7 +53,7 @@ exports.getFeeds = function(req, res) {
 			var queryParm = req.query;
 			var searchQuery = queryParm.searchQuery.toString();
 			var pattern = searchQuery;
-			FeedModel.find({feeds : {$elemMatch : { message : { '$regex' : '.*'+searchQuery+'.*'}}}}, function(err, result){
+			FeedModel.find({'feeds.message' : { $regex : new RegExp(searchQuery, "i")}}, function(err, result){
 				if (err) {
 					console.log(err);
 					res.json({errMsg : "Something went wrong in backend. We are working hard to resolve."});

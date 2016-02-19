@@ -115,7 +115,9 @@ define(['angular',
 			                        return;
                                }
                                $scope.hasError = false;
-                               $scope.savedFeedList = response.data[0].feeds;
+                               response.data.forEach(function(val, index, array){
+                               		$scope.savedFeedList.push(val['feeds']);
+                               	});
                         }
                         }, function(err){
                             checkResponseService.checkResponse(err, $scope, false);
