@@ -9,14 +9,9 @@
 		<form  role="form" name="feedForm1" ng-submit="searchFeeds('fb')">
 			<div class="row">
 				<div class="col-md-8">
-					<label for="question">Search Feeds from social page</label>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-8">
 					<div class="input-group searchBoxDiv">
 						<input type="search" ng-model="searchQuery" name="searchFeeds" id="searchBox" class="col-md-8 form-control" value="" required="required" maxLength="100"
-							placeholder="Enter your search criteria here..."
+							placeholder="Search Feeds from Social page..."
 							>
 					</div>
 				</div>
@@ -27,7 +22,7 @@
 		</form>
 
 		<div  class="row autoLeft">
-			<div class="col-3 menu">
+			<div class="col-3 menu ">
 				<ul>
 		            <li class="float" ng-repeat="feed in feedList" item="feed">
 
@@ -39,6 +34,16 @@
 			            </div>
 			            <div>
 			            	{{feed.message}}
+			            </div>
+			            <br>
+			            <div style="padding-bottom:4px;">
+			            	<b>Published By : &nbsp;</b>{{feed.from}}
+			            </div>
+			             <div>
+			            	<img class="likeImg" src="/images/like.png"><b>Likes : &nbsp;</b>{{feed.likes}}
+			            </div>
+			             <div>
+			            	<small><i>Published On : &nbsp;{{feed.publishedOn}}</i></small>
 			            </div>
 		            </li>
 		        </ul>
@@ -54,14 +59,9 @@
 		<form style="margin-left: 18px;" role="form" name="feedForm2" ng-submit="searchSavedFeeds($event)">
 			<div class="row">
 				<div class="col-md-8">
-					<label for="question">Search Saved Feeds</label>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-8">
 					<div class="input-group searchBoxDiv">
-						<input type="search" ng-model="savedFeedQuery" name="savedFeed" id="savedFeedBox" class="col-md-8 form-control" value="" style="border-radius: 4px;" required="required" maxLength="100"
-							placeholder="Enter your search criteria here..."
+						<input type="search" ng-model="savedFeedQuery" name="savedFeed" id="savedFeedBox" class="col-md-8 form-control" value="" style="border-radius: 4px;border: 1px solid #0C1A29;" required="required" maxLength="100"
+							placeholder="Search Save Feeds here..."
 							>
 					</div>
 				</div>
@@ -70,7 +70,7 @@
 		</form>
 		
 		<div  class="row autoLeft">
-			<div class="col-3 menu" style="margin-left:18px;">
+			<div class="col-3 menu saveFeedMenu">
 				<ul>
 		            <li class="float" ng-repeat="feed in savedFeedList" item="feed">
 
@@ -82,6 +82,16 @@
 			            </div>
 			            <div>
 			            	{{feed.message}}
+			            </div>
+			            <br>
+			            <div style="padding-bottom:4px;">
+			            	<b>Published By : &nbsp;</b>{{feed.from}}
+			            </div>
+			             <div>
+			            	<img class="likeImg" src="/images/like.png"><b>Likes : &nbsp;</b>{{feed.likes}}
+			            </div>
+			             <div>
+			            	<small><i ngconverted-Date></i></small>
 			            </div>
 		            </li>
 		        </ul>

@@ -6,7 +6,8 @@ define(['angular'],
 		'use strict';
 
 		webApp.constant('appConstants', {
-			SERVICE_ERROR : "Service is temporarily unavailable"
+			SERVICE_ERROR : "Service is temporarily unavailable. Please try after sometime.",
+			NO_RECORDS : "No records found"
 		});
 
 		webApp.run(['$rootScope', function($rootScope) {

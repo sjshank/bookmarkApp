@@ -8,10 +8,13 @@ define(['app'],
 					var feedFactory = [];
 					feedFactory.setFeedObj = function(obj){
 						feedFactory.push({
-		                    	id : obj.id,
-		                    	message : obj.message || " ",
-		                    	name : obj.name || " ",
-		                    	picture : obj.picture || " "
+		                    	id : obj['id'],
+		                    	message : obj['message'] || " ",
+		                    	name : obj['name'] || " ",
+		                    	picture : obj['picture'] || " ",
+		                    	from : obj['from']['name'] || " ",
+		                    	likes : obj['likes'] ? obj['likes']['data'].length : 0,
+		                    	publishedOn : (new Date(obj['created_time'].toString())).toDateString() || " "
 		                    });
 					}
 					feedFactory.clearFeedObj = function(){

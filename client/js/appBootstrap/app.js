@@ -6,6 +6,7 @@ define(['angular',
         'router',
         'utils/appConstants',
         'utils/appFilters',
+        'utils/appDirectives',
         'utils/auth',
         'anGoogleplus',
         'angCookies'],
@@ -16,6 +17,7 @@ define(['angular',
                  router,
                  appConstants,
                  appFilters,
+                 appDirectives,
                  auth,
                  anGoogleplus,
                  angCookies) {
@@ -28,7 +30,7 @@ define(['angular',
         router(webApp); // Defining routing
         auth(webApp);   // Authentication module. Cookies handler
         appConstants(webApp);   // Defining all application constants
-        appFilters(webApp);     // Defining all custom app filters
+        appFilters(webApp);     // Defining all custom app filters 
 
         // Configuring Googleplus login provider
         webApp.config(['GooglePlusProvider', function(GooglePlusProvider) {

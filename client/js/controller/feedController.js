@@ -3,13 +3,17 @@ define(['angular',
         'facebook',
         'services/feedService',
         'utils/appUtils',
-        'utils/appFilters'],
+        'utils/appFilters',
+        'utils/appDirectives',
+        'utils/appConstants'],
         function(angular,
         		 bookmarkApp,
                  facebook,
                  feedService,
                  appUtils,
-                 appFilters)  {
+                 appFilters,
+                 appDirectives,
+                 appConstants)  {
 
         	var _self = this;
 			'use strict';
@@ -18,8 +22,8 @@ define(['angular',
 			*	News Feed controller for handling request of searching and saving feeds from Facebook/Google+ page.
 			*/
 			bookmarkApp.controller('feedCtrl', ['$scope', '$rootScope', '$location', 'feedFactory', 'authFactory',
-										 'checkResponseService', 'feedService',
-					 function($scope, $rootScope, $location, feedFactory, authFactory, checkResponseService, feedService){
+										 'checkResponseService', 'feedService', 'appConstants',
+					 function($scope, $rootScope, $location, feedFactory, authFactory, checkResponseService, feedService, appConstants){
 				
 				$rootScope.showLogout = true;
 				$scope.savedFeedQuery = "";
@@ -34,18 +38,18 @@ define(['angular',
 				* Search feed event handler.
 				* This function will fetch all news feed from mentioned page and render all the posts based on user search criteria
 				*/
-				$scope.searchFeeds = function(vendor){
+				$scope.searchFeeds = function(){
 					$scope.showLeftBorder = false;
 					$scope.showRightBorder = true;
 					$scope.showSuccessAlert = false;
 					$scope.hasError = false;
 					$scope.feedList = [];
 					feedFactory.clearFeedObj();
-				if(vendor === 'fb'){
+				if(authFactory.getUserObj().isFBLogin){
 						FB.api(
 						    "/rapidBizApps",
 						    {
-						        "fields": "posts{id,message,name,picture,story,created_time}"
+						        "fields": "posts.limit(50){id,message,name,picture,from,likes,created_time}"
 						    },
 						    function (response) {
 						    	if (response && !response.error) {
@@ -54,24 +58,24 @@ define(['angular',
 							       		if($scope.feedList.length < 1){
 							       			$scope.isDisabled = false;
 							       			$scope.hasError = true;
-			                           		$scope.errorMsg = "No records found.";
+			                           		$scope.errorMsg = appConstants.NO_RECORDS;
 							       		}
 							       		$scope.$apply();
 							       		
 							       	}else{
 							       		$scope.isDisabled = false;
 							       		$scope.hasError = true;
-			                            $scope.errorMsg = "No records found.";
+			                            $scope.errorMsg = appConstants.NO_RECORDS;
 							       	}
 							     } else {
 							     		$scope.hasError = true;
-			                            $scope.errorMsg = "Service is temporarily unavailable";
+			                            $scope.errorMsg = appConstants.SERVICE_ERROR;
 							    }
 						    });
 					}else{
 						//TO-DO
 						$scope.hasError = true;
-			            $scope.errorMsg = "Service is temporarily unavailable";
+			            $scope.errorMsg = appConstants.SERVICE_ERROR;
 					}
 				};
 
@@ -111,7 +115,7 @@ define(['angular',
                                
                                if(response.data.length < 1){
                                		$scope.hasError = true;
-			                        $scope.errorMsg = "No records found.";
+			                        $scope.errorMsg = appConstants.NO_RECORDS;
 			                        return;
                                }
                                $scope.hasError = false;
@@ -126,6 +130,9 @@ define(['angular',
 				};
 					
 			}]);
+
+		// Registering directive
+		appDirectives(bookmarkApp); 
 
 		function getFilteredFeed(feeds, $scope, feedFactory){
 			if(typeof feeds != undefined || feeds !== ""){
@@ -142,7 +149,7 @@ define(['angular',
 			}else{
 				$scope.isDisabled = false;
 				$scope.hasError = true;
-		        $scope.errorMsg = "No records found.";
+		        $scope.errorMsg = appConstants.NO_RECORDS;
 			}
 		}
 });

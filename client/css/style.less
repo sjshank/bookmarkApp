@@ -19,6 +19,13 @@
 @40px : 40px;
 @40per  : 40%;
 
+body{
+	background-image: url("/images/home-made-paper.jpg");
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 .normalFont {
 	font-weight : normal !important;
 }
@@ -65,8 +72,8 @@
 	@{marginLeftProp} : auto;
 }
 .maroonClass {
-	background-@{colorProp} : @maroon-background !important;
-	border-@{colorProp} : @maroon-background !important;
+	background-@{colorProp} : #0C1A29 !important;
+	border-@{colorProp} : #0C1A29 !important;
 }
 .alignCenter {
 	text-align : center;
@@ -99,8 +106,11 @@
 	.fontClass
 }
 .bookmarkHeader {
-	background-@{colorProp} : @maroon-background;
-	border-@{colorProp} : @maroon-background;
+	background-@{colorProp} : #0C1A29;
+	border-@{colorProp} : #0C1A29;
+}
+.bookmarkHeader div h2 {
+	@{colorProp} : #FF9200 !important
 }
 .colorSienna {
 	@{colorProp} : @color-sienna !important;
@@ -131,6 +141,7 @@
 	.bRadius
 }
 #searchBox {
+    border: 1px solid #0C1A29;
 	.bRadius
 }
 .errDiv{
@@ -138,6 +149,19 @@
 	margin-botton : 15px !important;
 	width: 1142px;
     margin-right: auto;
+    border: 1px solid red;
+    color: red !important;
+    background-color: #fff !important;
+    font-weight: bold;
+}
+.successDiv{
+	margin-left: auto !important;
+    width: 1142px;
+    margin-right: auto;
+    border: 1px solid green;
+    color: green !important;
+    background-color: #fff !important;
+    font-weight: bold;
 }
 .loginHeader, {
 	margin : 0px 0 15px !important;
@@ -164,9 +188,6 @@
 	margin-bottom : 0px !important;
 }
 .loginDiv {
-	background-@{colorProp} : aliceblue;
-    border: 1px solid aliceblue;
-    border-radius: 5px;
     @{width}: @300px + @20px + @10px;
 }
 .marginLeft40px {
@@ -192,20 +213,16 @@
 .menu li {
     padding: 8px;
     margin-bottom: 7px;
-    background-@{colorProp} :#33b5e5;
+    background-@{colorProp} :#0C1A29;
     @{colorProp}: #ffffff;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 .menu li:hover {
-    background-@{colorProp}: #0099cc;
+    background-@{colorProp}: #350b07;
 }
 .searchFeedSec {
-	width: 53%;
-    border-right-style: 1px solid !important;
-    border: 1px solid thistle;
-    border-left-style: none;
-    border-bottom-style: none;
-    border-top-style: none;
+	width: 44%;
+	@{marginLeftProp} : 30px;
     .floatLeft
 }
 hr.vertical
@@ -218,22 +235,17 @@ hr.vertical
 	margin-botton : @marginTop16px - 1;
 }
 .saveFeedSec {
- 	width: 46%;
-    border-left-style: none;
-    border-bottom-style: none;
-    border-top-style: none;
-    border-right-style: none;
-    .floatLeft
+ 	width: 44%;
+ 	margin-right: 30px;
+    .floatRight
 }
-.rightBorder {
-	border : 1px solid thistle;
-	border-left-style: none;
-    border-bottom-style: none;
-    border-top-style: none;
+.likeImg {
+	height: @20px;
+    margin-top: -11px;
+    padding-right: @2px;
+    width: @20px + 5px;
 }
-.leftBorder {
-	border : 1px solid thistle;
-	border-right-style: none;
-    border-bottom-style: none;
-    border-top-style: none;
+.saveFeedMenu {
+	margin-left: 18px;
+    width: 91% !important;
 }

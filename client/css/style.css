@@ -1,3 +1,10 @@
+body {
+  background-image: url("/images/home-made-paper.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 .normalFont {
   font-weight: normal !important;
 }
@@ -44,8 +51,8 @@
   margin-left: auto;
 }
 .maroonClass {
-  background-color: #350b07 !important;
-  border-color: #350b07 !important;
+  background-color: #0C1A29 !important;
+  border-color: #0C1A29 !important;
 }
 .alignCenter {
   text-align: center;
@@ -78,8 +85,11 @@
   font-family: Helvetica, Arial, sans-serif;
 }
 .bookmarkHeader {
-  background-color: #350b07;
-  border-color: #350b07;
+  background-color: #0C1A29;
+  border-color: #0C1A29;
+}
+.bookmarkHeader div h2 {
+  color: #ff9200 !important;
 }
 .colorSienna {
   color: #a0522d !important;
@@ -88,8 +98,8 @@
   color: #cccccc;
 }
 .headerNav {
-  background-color: #350b07 !important;
-  border-color: #350b07 !important;
+  background-color: #0C1A29 !important;
+  border-color: #0C1A29 !important;
 }
 .footer {
   margin-top: 20px;
@@ -98,8 +108,8 @@
   min-height: 50px;
   margin-top: 16px;
   border-radius: 4px;
-  background-color: #350b07 !important;
-  border-color: #350b07 !important;
+  background-color: #0C1A29 !important;
+  border-color: #0C1A29 !important;
 }
 .footerLbl {
   margin-top: 16px;
@@ -112,6 +122,7 @@
   border-radius: 4px;
 }
 #searchBox {
+  border: 1px solid #0C1A29;
   border-radius: 4px;
 }
 .errDiv {
@@ -119,6 +130,19 @@
   margin-botton: 15px !important;
   width: 1142px;
   margin-right: auto;
+  border: 1px solid red;
+  color: red !important;
+  background-color: #fff !important;
+  font-weight: bold;
+}
+.successDiv {
+  margin-left: auto !important;
+  width: 1142px;
+  margin-right: auto;
+  border: 1px solid green;
+  color: green !important;
+  background-color: #fff !important;
+  font-weight: bold;
 }
 .loginHeader {
   margin: 0px 0 15px !important;
@@ -145,9 +169,6 @@
   margin-bottom: 0px !important;
 }
 .loginDiv {
-  background-color: aliceblue;
-  border: 1px solid aliceblue;
-  border-radius: 5px;
   width: 330px;
 }
 .marginLeft40px {
@@ -173,20 +194,16 @@
 .menu li {
   padding: 8px;
   margin-bottom: 7px;
-  background-color: #33b5e5;
+  background-color: #0C1A29;
   color: #ffffff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 .menu li:hover {
-  background-color: #0099cc;
+  background-color: #350b07;
 }
 .searchFeedSec {
-  width: 53%;
-  border-right-style: 1px solid !important;
-  border: 1px solid thistle;
-  border-left-style: none;
-  border-bottom-style: none;
-  border-top-style: none;
+  width: 44%;
+  margin-left: 30px;
   float: left;
 }
 hr.vertical {
@@ -198,22 +215,17 @@ hr.vertical {
   margin-botton: 15px;
 }
 .saveFeedSec {
-  width: 46%;
-  border-left-style: none;
-  border-bottom-style: none;
-  border-top-style: none;
-  border-right-style: none;
-  float: left;
+  width: 44%;
+  margin-right: 30px;
+  float: right;
 }
-.rightBorder {
-  border: 1px solid thistle;
-  border-left-style: none;
-  border-bottom-style: none;
-  border-top-style: none;
+.likeImg {
+  height: 20px;
+  margin-top: -11px;
+  padding-right: 2px;
+  width: 25px;
 }
-.leftBorder {
-  border: 1px solid thistle;
-  border-right-style: none;
-  border-bottom-style: none;
-  border-top-style: none;
+.saveFeedMenu {
+  margin-left: 18px;
+  width: 91% !important;
 }

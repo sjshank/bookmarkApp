@@ -1,11 +1,13 @@
 define(['app',
         'facebook',
         'services/loginService',
-        'utils/appUtils'],
+        'utils/appUtils',
+        'utils/appConstants'],
         function(bookmarkApp,
                  facebook,
                  loginService,
-                 appUtils) {
+                 appUtils,
+                 appConstants) {
 
             var _self = this;
             'use strict';
@@ -16,9 +18,9 @@ define(['app',
             */
 
             bookmarkApp.controller('loginCtrl', ['$scope', '$rootScope', '$location', 'authFactory', 'GooglePlus',
-                                     '$cookieStore', 'loginService', 'checkResponseService',
+                                     '$cookieStore', 'loginService', 'checkResponseService', 'appConstants',
                                  function($scope, $rootScope, $location, authFactory, GooglePlus, $cookieStore,
-                                             loginService, checkResponseService){
+                                             loginService, checkResponseService, appConstants){
                 console.log("Login controller");
                 $scope.hasError = false;
                 $rootScope.showLogout = false;
@@ -76,11 +78,11 @@ define(['app',
                                                 $scope.errorMsg = "Not authorized to access. Please log in."
                                             }else{
                                                 $scope.hasError = true;
-                                                $scope.errorMsg = "Service is temporarily unavailable."
+                                                $scope.errorMsg = appConstants.SERVICE_ERROR;
                                             } 
                                         }, function (err) {
                                             $scope.hasError = true;
-                                            $scope.errorMsg = "Service is temporarily unavailable."
+                                            $scope.errorMsg = appConstants.SERVICE_ERROR;
                                 });
                         }
                     }catch(e){
