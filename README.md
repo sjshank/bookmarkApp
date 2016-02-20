@@ -1,3 +1,8 @@
+
+Note : This application is still under construction.
+
+
+
 # Social Bookmark Application
 MEAN Stack based web application where you can search feeds/posts from your Facebook/Google+ page and save them in your pocket.
 
