@@ -21,7 +21,7 @@ define(['app',
                                      '$cookieStore', 'loginService', 'checkResponseService', 'appConstants',
                                  function($scope, $rootScope, $location, authFactory, GooglePlus, $cookieStore,
                                              loginService, checkResponseService, appConstants){
-                console.log("Login controller");
+               
                 $scope.hasError = false;
                 $rootScope.showLogout = false;
 
