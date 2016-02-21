@@ -52,8 +52,12 @@ exports.getFeeds = function(req, res) {
 	if(typeof req.query != undefined || req.query !== ""){
 			var queryParm = req.query;
 			var searchQuery = queryParm.searchQuery.toString();
-			var pattern = searchQuery;
-			FeedModel.find({'feeds.message' : { $regex : new RegExp(searchQuery, "i")}}, function(err, result){
+			var isFBPost = queryParm.isFBPost;
+			FeedModel.find(
+			{
+				'feeds.message' : { $regex : new RegExp(searchQuery, "i")},
+				'feeds.isFBPost' : isFBPost 
+			}, function(err, result){
 				if (err) {
 					console.log(err);
 					res.json({errMsg : "Something went wrong in backend. We are working hard to resolve."});

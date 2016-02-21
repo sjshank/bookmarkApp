@@ -229,3 +229,7 @@ hr.vertical {
   margin-left: 18px;
   width: 91% !important;
 }
+.messageDiv {
+  width: 95%;
+  word-wrap: break-word;
+}

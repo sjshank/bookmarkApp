@@ -17,6 +17,7 @@ define(['angular',
 
         	var _self = this;
 			'use strict';
+			var activityFeeds = [];
 
 			/*
 			*	News Feed controller for handling request of searching and saving feeds from Facebook/Google+ page.
@@ -45,6 +46,8 @@ define(['angular',
 					$scope.hasError = false;
 					$scope.feedList = [];
 					feedFactory.clearFeedObj();
+
+				// Search all public feeds from Facebook social page (rapidBizApps)
 				if(authFactory.getUserObj().isFBLogin){
 						FB.api(
 						    "/rapidBizApps",
@@ -54,7 +57,18 @@ define(['angular',
 						    function (response) {
 						    	if (response && !response.error) {
 						    		if(typeof response.posts != undefined || response.posts !== ""){
-							       		$scope.feedList = getFilteredFeed(response.posts.data, $scope, feedFactory);
+						    			activityFeeds.push({
+							  				id : response.posts.data['id'],
+							  				message : response.posts.data['message'],
+							  				likes : response.posts.data['likes']['data'].length,
+							  				picture : response.posts.data['picture'],
+							  				name : response.posts.data['name'],
+							  				publishedOn : response.posts.data['created_time'],
+							  				from : response.posts.data['from'],
+							  				isFBPost : true
+						  				});
+
+							       		$scope.feedList = getFilteredFeed(activityFeeds, $scope, feedFactory);
 							       		if($scope.feedList.length < 1){
 							       			$scope.isDisabled = false;
 							       			$scope.hasError = true;
@@ -73,12 +87,52 @@ define(['angular',
 							    }
 						    });
 					}else{
-						//TO-DO
-						$scope.hasError = true;
-			            $scope.errorMsg = appConstants.SERVICE_ERROR;
+					// Search all public feeds from Google+ social page (NodeJSFan)
+						var request = gapi.client.plus.activities.list({
+							'userId': '+NodeJSFan',
+							'collection' : 'public',
+							'fields' : 'items(actor(clientSpecificActorInfo,displayName,id,image,name,url),id,object,published)'
+						});
+
+						request.execute(function(response) {
+							activityFeeds = [];
+						  	if(response){
+						  		response.items.forEach(function(val, index, item){
+						  			var picURL  = "";
+						  			var n = "";
+						  			if(val['object']['attachments'] && val['object']['attachments'][0]
+						  				&& val['object']['attachments'][0]['image'])
+						  			{
+						  				picURL = val['object']['attachments'][0]['image']['url']
+						  				n = val['object']['attachments'][0]['displayName'];
+						  			}
+						  			activityFeeds.push({
+						  				id : val['id'],
+						  				message : val['object']['content'],
+						  				likes : val['object']['plusoners']['totalItems'],
+						  				picture : picURL,
+						  				name : n,
+						  				publishedOn : val['published'],
+						  				from : val['actor']['displayName'],
+						  				isFBPost : false
+						  			});
+						  		});
+						  		$scope.feedList = getFilteredFeed(activityFeeds, $scope, feedFactory);
+						  		if($scope.feedList.length < 1){
+							       			$scope.isDisabled = false;
+							       			$scope.hasError = true;
+			                           		$scope.errorMsg = appConstants.NO_RECORDS;
+							       	}
+							    $scope.$apply();
+						  	}else{
+						  		$scope.hasError = true;
+			                    $scope.errorMsg = appConstants.SERVICE_ERROR;
+						  	}
+						});						
 					}
 				};
 
+				// Save searched feeds, from social page, into mongodb 
 				$scope.saveFeeds = function(event){
 					$scope.showSuccessAlert = false;
 					$scope.hasError = false;
@@ -102,6 +156,7 @@ define(['angular',
 
 				};
 
+				// Search feeds mongodb and display on screen
 				$scope.searchSavedFeeds = function(event){
 					$scope.showLeftBorder = true;
 					$scope.showRightBorder = false;
@@ -109,7 +164,8 @@ define(['angular',
 					$scope.savedFeedList = [];
 					feedService.getFeeds(
                         {
-                           searchQuery : $scope.savedFeedQuery
+                           searchQuery : $scope.savedFeedQuery,
+                           isFBPost : authFactory.getUserObj().isFBLogin
                         }).$promise.then(function(response){
                             if(checkResponseService.checkResponse(response, $scope, true)){
                                

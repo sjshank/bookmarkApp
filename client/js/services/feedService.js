@@ -12,9 +12,10 @@ define(['app'],
 		                    	message : obj['message'] || " ",
 		                    	name : obj['name'] || " ",
 		                    	picture : obj['picture'] || " ",
-		                    	from : obj['from']['name'] || " ",
-		                    	likes : obj['likes'] ? obj['likes']['data'].length : 0,
-		                    	publishedOn : (new Date(obj['created_time'].toString())).toDateString() || " "
+		                    	from : obj['from'] || " ",
+		                    	likes : obj['likes'] || 0,
+		                    	publishedOn : (new Date(obj['publishedOn'].toString())).toDateString() || " ",
+		                    	isFBPost : obj['isFBPost']
 		                    });
 					}
 					feedFactory.clearFeedObj = function(){

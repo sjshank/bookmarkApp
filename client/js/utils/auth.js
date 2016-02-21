@@ -66,10 +66,9 @@ return function(bookmarkApp){
                                 window.location = '#/login';
                             });
                         }else{
-                            GooglePlus.logout().then(function(response){
+                                gapi.auth.signOut();
                                 authFactory.clearCookies();
                                 window.location = '#/login';
-                            });
                         }
                     }catch(e){
                         console.log("Unable to logout");

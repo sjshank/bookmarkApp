@@ -32,13 +32,10 @@ define(['angular',
         appConstants(webApp);   // Defining all application constants
         appFilters(webApp);     // Defining all custom app filters 
 
-        // Configuring Googleplus login provider
-        webApp.config(['GooglePlusProvider', function(GooglePlusProvider) {
-                GooglePlusProvider.init({
-                        clientId: '915767291352-ecpictdg9a7v815i2k1l3rmcsr7op8qd.apps.googleusercontent.com',
-                        apiKey: 'AIzaSyCEW06Qv-mD1RRswAgwVqmMSEfuhGT5MVk'
-                 });
-        }]);
+        webApp.config(function() {
+                gapi.client.setApiKey('AIzaSyA5Xzmf-O9hxw69GFChQSa-1xzwtKGN2aE'); //set your API KEY
+                gapi.client.load('plus', 'v1',function(){});
+        });
 
         //Bootstrapping application using AngularAMD
         return angularAMD.bootstrap(webApp);

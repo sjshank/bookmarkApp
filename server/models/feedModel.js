@@ -10,7 +10,8 @@ var feedSchema = new Schema({
 		picture : {type: String},
 		from : {type: String},
 		likes : {type: Number},
-		publishedOn : {type: Date, default : ""}
+		publishedOn : {type: Date, default : ""},
+		isFBPost : {type: Boolean}
 	},
 	saved_at : {type: Date, default: new Date().toDateString()},
 	saved_by : {type: String, default: "Guest User"}
