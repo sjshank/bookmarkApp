@@ -46,9 +46,11 @@ define(['angular',
 					$scope.hasError = false;
 					$scope.feedList = [];
 					feedFactory.clearFeedObj();
+					activityFeeds = [];
 
 				// Search all public feeds from Facebook social page (rapidBizApps)
 				if(authFactory.getUserObj().isFBLogin){
+
 						FB.api(
 						    "/rapidBizApps",
 						    {
@@ -57,16 +59,18 @@ define(['angular',
 						    function (response) {
 						    	if (response && !response.error) {
 						    		if(typeof response.posts != undefined || response.posts !== ""){
-						    			activityFeeds.push({
-							  				id : response.posts.data['id'],
-							  				message : response.posts.data['message'],
-							  				likes : response.posts.data['likes']['data'].length,
-							  				picture : response.posts.data['picture'],
-							  				name : response.posts.data['name'],
-							  				publishedOn : response.posts.data['created_time'],
-							  				from : response.posts.data['from'],
-							  				isFBPost : true
-						  				});
+						    			response.posts.data.forEach(function(val, index, item){
+							    			activityFeeds.push({
+								  				id : val['id'],
+								  				message : val['message'],
+								  				likes : val['likes'] ? val['likes']['data'].length : 0,
+								  				picture : val['picture'] ? val['picture'] : "",
+								  				name : val['name'] ? val['name'] : "",
+								  				publishedOn : val['created_time'],
+								  				from : val['from'] ? val['from']['name'] : 'Unknown',
+								  				isFBPost : true
+							  				});
+							    		});
 
 							       		$scope.feedList = getFilteredFeed(activityFeeds, $scope, feedFactory);
 							       		if($scope.feedList.length < 1){
@@ -89,13 +93,13 @@ define(['angular',
 					}else{
 					// Search all public feeds from Google+ social page (NodeJSFan)
 						var request = gapi.client.plus.activities.list({
-							'userId': '+NodeJSFan',
+							'userId': '+AngularJS',
 							'collection' : 'public',
 							'fields' : 'items(actor(clientSpecificActorInfo,displayName,id,image,name,url),id,object,published)'
 						});
 
 						request.execute(function(response) {
-							activityFeeds = [];
+							
 						  	if(response){
 						  		response.items.forEach(function(val, index, item){
 						  			var picURL  = "";
@@ -109,11 +113,11 @@ define(['angular',
 						  			activityFeeds.push({
 						  				id : val['id'],
 						  				message : val['object']['content'],
-						  				likes : val['object']['plusoners']['totalItems'],
+						  				likes : val['object']['plusoners'] ? val['object']['plusoners']['totalItems'] : 0,
 						  				picture : picURL,
 						  				name : n,
 						  				publishedOn : val['published'],
-						  				from : val['actor']['displayName'],
+						  				from : val['actor'] ? val['actor']['displayName'] : 'Unknown',
 						  				isFBPost : false
 						  			});
 						  		});

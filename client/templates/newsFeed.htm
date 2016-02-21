@@ -40,7 +40,9 @@
 			            	<b>Published By : &nbsp;</b>{{feed.from}}
 			            </div>
 			             <div>
-			            	<img class="likeImg" src="/images/like.png"><b>Likes : &nbsp;</b>{{feed.likes}}
+			            	<span ng-class="{ 'displayNone' : !feed.isFBPost}"><img class="likeImg" src="/images/like.png"><b>Likes : &nbsp;</b>{{feed.likes}}</span>
+			            	<span ng-class="{ 'displayNone' : feed.isFBPost}">
+			            	<img class="likeImg" src="/images/gplus.png"><b>Plusoners : &nbsp;</b>{{feed.likes}}</span>
 			            </div>
 			             <div>
 			            	<small><i>Published On : &nbsp;{{feed.publishedOn}}</i></small>
@@ -87,10 +89,13 @@
 			            <div style="padding-bottom:4px;">
 			            	<b>Published By : &nbsp;</b>{{feed.from}}
 			            </div>
-			             <div>
-			            	<img class="likeImg" src="/images/like.png"><b>Likes : &nbsp;</b>{{feed.likes}}
+			            <div>
+			            	<span ng-class="{ 'displayNone' : !feed.isFBPost}"><img class="likeImg" src="/images/like.png"><b>Likes : &nbsp;</b>{{feed.likes}}</span>
+			            	<span ng-class="{ 'displayNone' : feed.isFBPost}">
+			            	<img class="likeImg" src="/images/gplus.png"><b>Plusoners : &nbsp;</b>{{feed.likes}}</span>
 			            </div>
 			             <div>
+			             	<!-- Cutom directive to convert date into date string-->
 			            	<small><i ngconverted-Date></i></small>
 			            </div>
 		            </li>
