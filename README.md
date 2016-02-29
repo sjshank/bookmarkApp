@@ -1,6 +1,4 @@
 
-Note : This application is still under construction.
-
 
 
 # Social Bookmark Application
